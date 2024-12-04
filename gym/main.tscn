@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://tpmkx2dnvos"]
 
-[ext_resource type="Script" path="res://gym/Agent.cs" id="1_8c5un"]
+[ext_resource type="Script" path="res://gym/agent.gd" id="1_ag2xn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xpqwb"]
 
@@ -38,8 +38,8 @@ size = Vector3(1, 1, 10)
 transform = Transform3D(1, 0, 0, 0, 0.946385, 0.323042, 0, -0.323042, 0.946385, 0, 3.41077, 7.43243)
 
 [node name="Agent" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75502, 0)
-script = ExtResource("1_8c5un")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+script = ExtResource("1_ag2xn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Agent"]
 shape = SubResource("BoxShape3D_xpqwb")
@@ -64,21 +64,24 @@ shape = SubResource("BoxShape3D_dxwff")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Target"]
 mesh = SubResource("BoxMesh_itfo4")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Wall" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.09349)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.61079)
 shape = SubResource("BoxShape3D_ktnyk")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5098, 0, 3.09176)
 shape = SubResource("BoxShape3D_g4rnh")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.41496)
 shape = SubResource("BoxShape3D_ktnyk")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.51596, 0, 3.09176)
 shape = SubResource("BoxShape3D_g4rnh")
+
+[connection signal="body_entered" from="Target" to="Agent" method="_on_target_body_entered"]
+[connection signal="body_entered" from="Wall" to="Agent" method="_on_wall_body_entered"]
