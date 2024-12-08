@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://tpmkx2dnvos"]
 
-[ext_resource type="Script" path="res://gym/agent.gd" id="1_ag2xn"]
-[ext_resource type="Script" path="res://gym/ai_controller_3d.gd" id="2_1r25q"]
+[ext_resource type="Script" path="res://01-example-base/agent.gd" id="1_ag2xn"]
+[ext_resource type="Script" path="res://01-example-base/ai_controller_3d.gd" id="2_1r25q"]
 [ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="3_pqu63"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xpqwb"]
